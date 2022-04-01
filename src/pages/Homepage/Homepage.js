@@ -1,6 +1,6 @@
 import { Navbar, NoteCard, Sidebar } from "../../components/index";
-import "./HomePage.css";
-const HomePage = () => {
+import "./Homepage.css";
+const Homepage = () => {
   return (
     <>
       <Navbar />
@@ -16,4 +16,4 @@ const HomePage = () => {
   );
 };
 
-export { HomePage };
+export { Homepage };
