@@ -1,21 +1,27 @@
+import { Link } from "react-router-dom";
 import { heroimage } from "../../assests";
 import "./LandingPage.css";
 
 const LandingPage = () => {
   return (
     <>
-      <div className="container">
+      <div className="landing-page-container">
         <div className="intro-container">
           <h1>SimpleNotes</h1>
-          <h2>Meet your Simple note taking App</h2>
-          <p>
-            Manage your daily tasks and workflow in a simple way and boost your
-            efficiency without any efforts.
-          </p>
-          <button>Join Now</button>
-          <small>Already have an account?</small>
+          <div>
+            <h2>Meet your Simple </h2>
+            <h2> Note taking App</h2>
+            <p className="intro-detail">
+              Manage your daily tasks and workflow <br /> in a simple way and
+              boost your efficiency <br /> without any efforts.
+            </p>
+          </div>
+          <div className="primary-cta">
+            <button className="btn">Join Now</button>
+            <Link to={"#"}>Already have an account?</Link>
+          </div>
         </div>
-        <img src={heroimage} alt="Girl taking Notes" />;
+        <img src={heroimage} alt="Girl taking Notes" className="hero-image" />
       </div>
     </>
   );

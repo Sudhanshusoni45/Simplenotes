@@ -1,3 +1,31 @@
-.container {
+.landing-page-container {
   display: flex;
+  justify-content: space-around;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  /* border: 1px solid red; */
+  border-radius: 2rem;
+  margin:var(--space-md);
+  height: 91vh;
+}
+
+.intro-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.hero-image{
+  width: 35rem;
+}
+
+.intro-detail{
+  margin-top: var(--space-xxs);
+}
+
+.primary-cta a{
+text-decoration: none;
+display: block;
+margin-top: var(--space-xxs);
 }
