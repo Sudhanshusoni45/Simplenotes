@@ -49,7 +49,7 @@ const Sidebar = () => {
           <h4>Sudhanshu Soni</h4>
           <small>@sudhanshusoni</small>
         </div>
-        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        <i className="fa fa-sign-out" aria-hidden="true"></i>
       </div>
     </aside>
   );
