@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 import { authReducer } from "../reducer/authReducer";
 
 const AuthContext = createContext(null);
@@ -8,6 +9,7 @@ const AuthProvider = ({ children }) => {
     ? localStorage.getItem("token")
     : null;
   const [authState, authDispatch] = useReducer(authReducer, initialState);
+  const navigate = useNavigate();
 
   // login
   const loginHandler = async (user) => {
@@ -20,6 +22,7 @@ const AuthProvider = ({ children }) => {
       if (response.status === 200) {
         authDispatch({ type: "LOGIN", payload: { token: token } });
         localStorage.setItem("token", token);
+        navigate("/home");
       }
     } catch (err) {
       console.log(err);
@@ -39,6 +42,7 @@ const AuthProvider = ({ children }) => {
           payload: { token: token },
         });
         localStorage.setItem("token", token);
+        navigate("/home");
       }
     } catch (err) {
       console.log(err);

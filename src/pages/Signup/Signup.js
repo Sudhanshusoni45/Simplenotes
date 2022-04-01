@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Navbar } from "../../components";
 import { useAuth } from "../../context/auth-Context";
 
 const Signup = () => {
@@ -14,12 +15,13 @@ const Signup = () => {
     signupHandler(newUser);
   };
 
-  useEffect(() => console.log(newUser));
   return (
     <>
+      <Navbar />
+
       <div className="login-component">
         <form action="" className="login-form" onSubmit={submitHandler}>
-          <h1>SignUp</h1>
+          <h1>Signup</h1>
           <div className="input-group">
             <label htmlFor="firstName">First Name</label>
             <input
