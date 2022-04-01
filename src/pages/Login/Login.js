@@ -16,6 +16,13 @@ const Login = () => {
     setUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
 
+  const addGuestCredentials = () => {
+    setUser((prevUser) => ({
+      email: "adarshbalika@gmail.com",
+      password: "adarshBalika123",
+    }));
+  };
+
   return (
     <>
       <Navbar />
@@ -53,7 +60,12 @@ const Login = () => {
           </a>
           <Link to={"/signup"}> New here? Create a new account </Link>
 
-          <button className="btn login-btn">Login</button>
+          <button className="btn login-btn" onClick={addGuestCredentials}>
+            Test Login
+          </button>
+          <button type="submit" className="btn login-btn">
+            Login
+          </button>
         </form>
       </div>
     </>
