@@ -36,7 +36,9 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <button className="btn">Create New Note</button>
+          <Link to={"/noteeditor"}>
+            <button className="btn">Create New Note</button>
+          </Link>
         </li>
       </ul>
       <div className="user-logout">

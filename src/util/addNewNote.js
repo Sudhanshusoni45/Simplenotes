@@ -1,4 +1,6 @@
-const addNewNote = async (note, token, noteDispatch) => {
+import axios from "axios";
+
+const addNewNote = async ({ note, token, noteDispatch }) => {
   try {
     const url = "/api/notes";
     const config = {
@@ -6,7 +8,8 @@ const addNewNote = async (note, token, noteDispatch) => {
         authorization: token,
       },
     };
-    const data = { note };
+    const data = { note: { note } };
+    console.log("data:", data);
     const response = await axios.post(url, data, config);
     if (response.status === 201) {
       const { notes } = response.data;
