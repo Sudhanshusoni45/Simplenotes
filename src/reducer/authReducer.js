@@ -1,10 +1,10 @@
 const authReducer = (state, { type, payload }) => {
-  const { token } = payload;
+  const { token, user } = payload;
   switch (type) {
     case "LOGIN":
-      return { token: token };
+      return { user: user, token: token };
     case "SIGNUP":
-      return { token: token };
+      return { user: user, token: token };
     default:
       return state;
   }

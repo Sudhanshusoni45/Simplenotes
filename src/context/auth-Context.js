@@ -12,15 +12,14 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   // login
-  const loginHandler = async (user) => {
+  const loginHandler = async (userCredentials) => {
     try {
       const url = "/api/auth/login";
-      const data = user;
+      const data = userCredentials;
       const response = await axios.post(url, data);
-      console.log("response:", response);
-      const { encodedToken: token } = response.data;
+      const { encodedToken: token, foundUser: user } = response.data;
       if (response.status === 200) {
-        authDispatch({ type: "LOGIN", payload: { token: token } });
+        authDispatch({ type: "LOGIN", payload: { user: user, token: token } });
         localStorage.setItem("token", token);
         navigate("/home");
       }
@@ -35,11 +34,11 @@ const AuthProvider = ({ children }) => {
       const url = "/api/auth/signup";
       const data = newUser;
       const response = await axios.post(url, data);
-      const { encodedToken: token } = response.data;
+      const { encodedToken: token, createdUser: user } = response.data;
       if (response.status === 201) {
         authDispatch({
           action: "SIGNUP",
-          payload: { token: token },
+          payload: { user: user, token: token },
         });
         localStorage.setItem("token", token);
         navigate("/home");
