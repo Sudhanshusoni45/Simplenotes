@@ -5,9 +5,11 @@ import { authReducer } from "../reducer/authReducer";
 
 const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
-  const initialState = localStorage.getItem("token")
+  const initialToken = localStorage.getItem("token")
     ? localStorage.getItem("token")
-    : null;
+    : "";
+  const initialState = { user: "", token: initialToken };
+
   const [authState, authDispatch] = useReducer(authReducer, initialState);
   const navigate = useNavigate();
 
@@ -20,6 +22,7 @@ const AuthProvider = ({ children }) => {
       const { encodedToken: token, foundUser: user } = response.data;
       if (response.status === 200) {
         authDispatch({ type: "LOGIN", payload: { user: user, token: token } });
+        console.log("token from loginHandler", token);
         localStorage.setItem("token", token);
         navigate("/home");
       }

@@ -1,8 +1,16 @@
-import { createContext, useContext, useReducer } from "react";
+import axios from "axios";
+import { createContext, useContext, useReducer, useEffect } from "react";
+import { noteReducer } from "../reducer";
+import { useAuth } from "./auth-Context";
 
 const NoteContext = createContext();
 
 const NoteProvider = ({ children }) => {
+  const { authState } = useAuth();
+  const { token } = authState;
+
+  const initialState = "";
+  const [noteState, noteDispatch] = useReducer(noteReducer, initialState);
   return (
     <NoteContext.Provider value={{ noteState, noteDispatch }}>
       {children}
@@ -10,4 +18,6 @@ const NoteProvider = ({ children }) => {
   );
 };
 
-export default NoteProvider;
+const useNote = () => useContext(NoteContext);
+
+export { NoteProvider, useNote };
