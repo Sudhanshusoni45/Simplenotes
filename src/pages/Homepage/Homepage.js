@@ -16,8 +16,8 @@ const Homepage = () => {
         <Sidebar />
         <div className="note-card-container">
           {noteState.length !== 0
-            ? noteState.map(({ note, createdAt }) => (
-                <NoteCard note={note} createdAt={createdAt} />
+            ? noteState.map(({ note, createdAt, _id }) => (
+                <NoteCard note={note} createdAt={createdAt} _id={_id} />
               ))
             : null}
         </div>
