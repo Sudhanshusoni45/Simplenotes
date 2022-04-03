@@ -1,6 +1,8 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-const addNewNote = async ({ note, token, noteDispatch }) => {
+const addNewNote = async ({ note, token, noteDispatch, navigate }) => {
   try {
     const url = "/api/notes";
     const config = {
@@ -9,11 +11,11 @@ const addNewNote = async ({ note, token, noteDispatch }) => {
       },
     };
     const data = { note: { note } };
-    console.log("data:", data);
     const response = await axios.post(url, data, config);
     if (response.status === 201) {
       const { notes } = response.data;
       noteDispatch({ type: "ADD_NOTE", payload: { notes: notes } });
+      navigate("/home");
     }
     console.log("response from createNote:", response);
   } catch (err) {

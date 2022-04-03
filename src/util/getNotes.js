@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useAuth, useNote } from "../context";
 
-const getNotes = async (token, noteDispatch) => {
+const getNotes = async ({ token, noteDispatch }) => {
   try {
     const url = "/api/notes";
     const config = {

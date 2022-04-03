@@ -3,8 +3,8 @@ const noteReducer = (state, { type, payload }) => {
   switch (type) {
     case "INITIALIZE":
       return [...notes];
-    case "":
-      return;
+    case "ADD_NOTE":
+      return [...notes];
     default:
       return state;
   }
