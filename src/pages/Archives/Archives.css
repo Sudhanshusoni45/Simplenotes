@@ -1,0 +1,6 @@
+.archive-page-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: var(--space-sm) 0 ;
+}
+

@@ -1,6 +1,6 @@
 import "./NoteCard.css";
 import ReactHtmlParser from "react-html-parser";
-import { deleteNote } from "../../util";
+import { addToArchive, deleteNote } from "../../util";
 import { useAuth, useNote } from "../../context";
 
 const NoteCard = ({ note, _id, createdAt }) => {
@@ -17,10 +17,13 @@ const NoteCard = ({ note, _id, createdAt }) => {
         <div className="note-icon-container">
           <i className="fas fa-palette"></i>
           <i className="fas fa-tag"></i>
-          <i className="fas fa-archive"></i>
+          <i
+            className="fas fa-archive"
+            onClick={() => addToArchive({ _id, noteDispatch, token })}
+          ></i>
           <i
             className="fas fa-trash"
-            onClick={() => deleteNote({ _id, noteDispatch, token })}
+            onClick={() => deleteNote({ _id, noteDispatch, token, note })}
           ></i>
         </div>
       </div>
