@@ -4,7 +4,6 @@ import { deleteNote } from "../../util";
 import { useAuth, useNote } from "../../context";
 
 const NoteCard = ({ note, _id, createdAt }) => {
-  console.log("note:", note);
   const { authState } = useAuth();
   const { token } = authState;
   const { noteDispatch } = useNote();
@@ -12,8 +11,7 @@ const NoteCard = ({ note, _id, createdAt }) => {
   return (
     <div className="note-card">
       <h3>Title</h3>
-      {ReactHtmlParser(note.note)}
-
+      {ReactHtmlParser(note)}
       <div className="note-card-bottom-section">
         <h3 className="note-created-date">Created On</h3>
         <div className="note-icon-container">

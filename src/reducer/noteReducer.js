@@ -5,6 +5,8 @@ const noteReducer = (state, { type, payload }) => {
       return [...notes];
     case "ADD_NOTE":
       return [...notes];
+    case "DELETE":
+      return [...notes];
     default:
       return state;
   }
