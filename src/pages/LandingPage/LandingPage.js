@@ -17,8 +17,10 @@ const LandingPage = () => {
             </p>
           </div>
           <div className="primary-cta">
-            <button className="btn">Join Now</button>
-            <Link to={"#"}>Already have an account?</Link>
+            <Link to={"signup"}>
+              <button className="btn">Join Now</button>
+            </Link>
+            <Link to={"login"}>Already have an account?</Link>
           </div>
         </div>
         <img src={heroimage} alt="Girl taking Notes" className="hero-image" />
