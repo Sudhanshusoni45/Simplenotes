@@ -7,7 +7,6 @@ const deleteNote = async (id, token, noteDispatch) => {
       },
     };
     const response = await axios.delete(url, config);
-    console.log("response from delete note:", response);
   } catch (err) {
     console.log(err);
   }
