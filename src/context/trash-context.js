@@ -9,8 +9,15 @@ const TrashProvider = ({ children }) => {
     setTrashState((prevState) => [...prevState, trashedNote]);
   };
 
+  const deleteFromTrash = (_id) => {
+    const newState = trashState.filter((item) => item._id !== _id);
+    setTrashState((prevState) => newState);
+  };
+
   return (
-    <TrashContext.Provider value={{ trashState, setTrashState, moveToTrash }}>
+    <TrashContext.Provider
+      value={{ trashState, setTrashState, moveToTrash, deleteFromTrash }}
+    >
       {children}
     </TrashContext.Provider>
   );
