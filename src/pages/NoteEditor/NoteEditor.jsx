@@ -21,7 +21,6 @@ const NoteEditor = () => {
     addNewNote({ note, token, noteDispatch, navigate });
   };
 
-  useEffect(() => console.log(note), [note]);
   return (
     <>
       <ReactQuill value={note} onChange={handleChange} />

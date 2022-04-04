@@ -1,8 +1,6 @@
 import axios from "axios";
 
 const restoreArchiveNote = async ({ _id, token, noteDispatch }) => {
-  console.log("token:", token);
-  console.log("_id:", _id);
   try {
     const url = `/api/archives/restore/${_id}`;
     const config = {

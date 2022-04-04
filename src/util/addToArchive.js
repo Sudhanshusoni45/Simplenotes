@@ -1,8 +1,6 @@
 import axios from "axios";
 
 const addToArchive = async ({ noteDispatch, token, _id, note }) => {
-  console.log("_id:", _id);
-  console.log("token:", token);
   try {
     const url = `/api/notes/archives/${_id}`;
     const data = { note: { note } };

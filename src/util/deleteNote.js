@@ -10,9 +10,7 @@ const deleteNote = async ({ _id, token, noteDispatch }) => {
       },
     };
     const response = await axios.delete(url, config);
-    console.log("response:", response);
     const { notes } = response.data;
-    console.log("notes:", notes);
     if (response.status === 200) {
       noteDispatch({ type: "DELETE", payload: { notes: notes } });
     }

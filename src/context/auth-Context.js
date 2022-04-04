@@ -22,7 +22,6 @@ const AuthProvider = ({ children }) => {
       const { encodedToken: token, foundUser: user } = response.data;
       if (response.status === 200) {
         authDispatch({ type: "LOGIN", payload: { user: user, token: token } });
-        console.log("token from loginHandler", token);
         localStorage.setItem("token", token);
         navigate("/home");
       }

@@ -17,7 +17,6 @@ const addNewNote = async ({ note, token, noteDispatch, navigate }) => {
       noteDispatch({ type: "ADD_NOTE", payload: { notes: notes } });
       navigate("/home");
     }
-    console.log("response from createNote:", response);
   } catch (err) {
     console.error(err);
   }
