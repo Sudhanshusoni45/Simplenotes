@@ -18,7 +18,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to={"/home"}>
+          <Link to={"/archives"}>
             <i className="fas fa-archive"></i>
             <label htmlFor="">Archive</label>
           </Link>

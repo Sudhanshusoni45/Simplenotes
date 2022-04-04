@@ -3,3 +3,4 @@ export { Homepage } from "./Homepage/Homepage.js";
 export { Login } from "./Login/Login";
 export { Signup } from "./Signup/Signup";
 export { NoteEditor } from "./NoteEditor/NoteEditor";
+export { Archives } from "./Archives/Archives";

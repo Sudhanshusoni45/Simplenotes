@@ -9,7 +9,10 @@ const NoteProvider = ({ children }) => {
   const { authState } = useAuth();
   const { token } = authState;
 
-  const initialState = "";
+  const initialState = {
+    notes: [],
+    archives: [],
+  };
   const [noteState, noteDispatch] = useReducer(noteReducer, initialState);
   return (
     <NoteContext.Provider value={{ noteState, noteDispatch }}>

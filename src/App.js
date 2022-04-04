@@ -1,6 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Homepage, LandingPage, Login, NoteEditor, Signup } from "./pages";
+import {
+  Archives,
+  Homepage,
+  LandingPage,
+  Login,
+  NoteEditor,
+  Signup,
+} from "./pages";
 
 function App() {
   return (
@@ -10,6 +17,7 @@ function App() {
       <Route path="login" element={<Login />}></Route>
       <Route path="signup" element={<Signup />}></Route>
       <Route path="noteeditor" element={<NoteEditor />}></Route>
+      <Route path="archives" element={<Archives />}></Route>
     </Routes>
   );
 }

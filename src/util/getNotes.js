@@ -10,13 +10,12 @@ const getNotes = async ({ token, noteDispatch }) => {
       },
     };
     const response = await axios.get(url, config);
-    console.log("response get:", response);
     if (response.status === 200) {
       const { notes } = response.data;
       noteDispatch({ type: "INITIALIZE", payload: { notes: notes } });
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
