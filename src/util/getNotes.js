@@ -15,7 +15,7 @@ const getNotes = async ({ token, noteDispatch }) => {
       noteDispatch({ type: "INITIALIZE", payload: { notes: notes } });
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 

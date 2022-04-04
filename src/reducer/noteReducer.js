@@ -10,6 +10,8 @@ const noteReducer = (state, { type, payload }) => {
       return { ...state, notes: [...notes] };
     case "ADD_TO_ARCHIVE":
       return { ...state, archives: [...archives], notes: [...notes] };
+    case "RESTORE_ARCHIVE_NOTE":
+      return { ...state, archives: [...archives], notes: [...notes] };
     default:
       return state;
   }

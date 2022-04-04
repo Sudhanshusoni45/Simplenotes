@@ -18,7 +18,12 @@ const Homepage = () => {
         <div className="note-card-container">
           {notes.length !== 0
             ? notes.map(({ note, createdAt, _id }) => (
-                <NoteCard note={note} createdAt={createdAt} _id={_id} />
+                <NoteCard
+                  note={note}
+                  createdAt={createdAt}
+                  _id={_id}
+                  inArchive={false}
+                />
               ))
             : null}
         </div>

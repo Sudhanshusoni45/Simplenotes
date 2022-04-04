@@ -21,7 +21,7 @@ const addToArchive = async ({ noteDispatch, token, _id, note }) => {
       });
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 

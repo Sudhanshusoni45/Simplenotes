@@ -17,7 +17,7 @@ const deleteNote = async ({ _id, token, noteDispatch }) => {
       noteDispatch({ type: "DELETE", payload: { notes: notes } });
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 

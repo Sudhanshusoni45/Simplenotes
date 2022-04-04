@@ -3,7 +3,7 @@ import { Navbar, NoteCard, Sidebar } from "../../components";
 import "./Archives.css";
 
 const Archives = () => {
-  const { noteState } = useNote();
+  const { noteState, noteDispatch } = useNote();
   const { archives } = noteState;
   return (
     <>
@@ -12,7 +12,14 @@ const Archives = () => {
         <Sidebar />
         <div className="note-card-container">
           {archives.length !== 0
-            ? archives.map(({ note, _id }) => <NoteCard note={note} />)
+            ? archives.map(({ note, _id }) => (
+                <NoteCard
+                  note={note}
+                  inArchive={true}
+                  _id={_id}
+                  noteDispatch={noteDispatch}
+                />
+              ))
             : null}
         </div>
       </div>

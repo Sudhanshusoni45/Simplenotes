@@ -19,7 +19,7 @@ const addNewNote = async ({ note, token, noteDispatch, navigate }) => {
     }
     console.log("response from createNote:", response);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
