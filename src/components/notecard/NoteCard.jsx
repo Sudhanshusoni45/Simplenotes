@@ -30,14 +30,21 @@ const NoteCard = ({ note, _id, createdAt, inArchive }) => {
               onClick={() => addToArchive({ _id, noteDispatch, token })}
             ></i>
           )}
-          <i
-            className="fas fa-trash"
-            onClick={() =>
-              inArchive
-                ? deleteArchiveNote({ _id, noteDispatch, token, note })
-                : deleteNote({ _id, noteDispatch, token, note })
-            }
-          ></i>
+          {inArchive ? (
+            <i
+              className="fas fa-trash"
+              onClick={() =>
+                deleteArchiveNote({ _id, noteDispatch, token, note })
+              }
+            ></i>
+          ) : (
+            <i
+              className="fas fa-trash"
+              onClick={() => {
+                deleteNote({ _id, noteDispatch, token, note });
+              }}
+            ></i>
+          )}
         </div>
       </div>
     </div>
