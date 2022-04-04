@@ -2,6 +2,7 @@ import "./NoteCard.css";
 import ReactHtmlParser from "react-html-parser";
 import { addToArchive, deleteNote, restoreArchiveNote } from "../../util";
 import { useAuth, useNote } from "../../context";
+import { deleteArchiveNote } from "../../util/deleteArchiveNote";
 
 const NoteCard = ({ note, _id, createdAt, inArchive }) => {
   const { authState } = useAuth();
@@ -19,7 +20,7 @@ const NoteCard = ({ note, _id, createdAt, inArchive }) => {
           <i className="fas fa-tag"></i>
           {inArchive ? (
             <i
-              class="fa fa-undo"
+              className="fa fa-undo"
               aria-hidden="true"
               onClick={() => restoreArchiveNote({ _id, token, noteDispatch })}
             ></i>
@@ -31,7 +32,11 @@ const NoteCard = ({ note, _id, createdAt, inArchive }) => {
           )}
           <i
             className="fas fa-trash"
-            onClick={() => deleteNote({ _id, noteDispatch, token, note })}
+            onClick={() =>
+              inArchive
+                ? deleteArchiveNote({ _id, noteDispatch, token, note })
+                : deleteNote({ _id, noteDispatch, token, note })
+            }
           ></i>
         </div>
       </div>
