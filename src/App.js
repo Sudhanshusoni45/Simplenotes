@@ -7,6 +7,7 @@ import {
   Login,
   NoteEditor,
   Signup,
+  Trash,
 } from "./pages";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path="signup" element={<Signup />}></Route>
       <Route path="noteeditor" element={<NoteEditor />}></Route>
       <Route path="archives" element={<Archives />}></Route>
+      <Route path="trash" element={<Trash />}></Route>
     </Routes>
   );
 }

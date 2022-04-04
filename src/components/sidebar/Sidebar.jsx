@@ -8,31 +8,31 @@ const Sidebar = () => {
         <li>
           <Link to={"/home"}>
             <i className="fas fa-home"></i>
-            <label htmlFor="">Home</label>
+            <label htmlFor="home">Home</label>
           </Link>
         </li>
         <li>
           <Link to={"/home"}>
             <i className="fa fa-tag" aria-hidden="true"></i>
-            <label htmlFor="">Label</label>
+            <label htmlFor="label">Label</label>
           </Link>
         </li>
         <li>
           <Link to={"/archives"}>
             <i className="fas fa-archive"></i>
-            <label htmlFor="">Archive</label>
+            <label htmlFor="archive">Archive</label>
           </Link>
         </li>
         <li>
-          <Link to={"/home"}>
+          <Link to={"/trash"}>
             <i className="fas fa-trash"></i>
-            <label htmlFor="">Trash</label>
+            <label htmlFor="trash">Trash</label>
           </Link>
         </li>
         <li>
           <Link to={"/home"}>
             <i className="fas fa-user"></i>
-            <label htmlFor="">Profile</label>
+            <label htmlFor="profile">Profile</label>
           </Link>
         </li>
         <li>
