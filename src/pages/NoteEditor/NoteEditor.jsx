@@ -9,18 +9,18 @@ import "./NoteEditor.css";
 import { Navbar, Sidebar } from "../../components";
 
 const NoteEditor = () => {
-  const [note, setNote] = useState();
+  const [note, setNote] = useState("");
+  const [noteBgColor, setNoteBgcolor] = useState("red");
   const { noteDispatch } = useNote();
   const { authState } = useAuth();
   const { token } = authState;
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setNote(e);
   };
 
   const submitHandler = () => {
-    addNewNote({ note, token, noteDispatch, navigate });
+    addNewNote({ note, token, noteDispatch, navigate, noteBgColor });
   };
 
   return (
@@ -37,6 +37,15 @@ const NoteEditor = () => {
           <button className="btn" onClick={submitHandler}>
             Add new Note
           </button>
+          <select
+            name="note-bg-color"
+            id="bg-color"
+            onChange={(e) => setNoteBgcolor((prevColor) => e.target.value)}
+          >
+            <option value="red">red</option>
+            <option value="blue">blue</option>
+            <option value="yellow">yellow</option>
+          </select>
         </div>
       </div>
     </>

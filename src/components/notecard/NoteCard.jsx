@@ -4,14 +4,22 @@ import { addToArchive, deleteNote, restoreArchiveNote } from "../../util";
 import { useAuth, useNote, useTrash } from "../../context";
 import { deleteArchiveNote } from "../../util/deleteArchiveNote";
 
-const NoteCard = ({ note, _id, createdAt, inArchive, inTrash }) => {
+const NoteCard = ({
+  note,
+  _id,
+  createdAt,
+  inArchive,
+  inTrash,
+  noteBgColor,
+}) => {
   const { authState } = useAuth();
   const { token } = authState;
   const { noteDispatch } = useNote();
   const { moveToTrash, deleteFromTrash, restoreFromTrash } = useTrash();
+  console.log("noteBgColor:", noteBgColor);
 
   return (
-    <div className="note-card">
+    <div style={{ background: noteBgColor }} className="note-card">
       <h3>Title</h3>
       {ReactHtmlParser(note)}
       <div className="note-card-bottom-section">
