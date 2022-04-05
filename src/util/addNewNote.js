@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const addNewNote = async ({
   note,
@@ -8,6 +6,7 @@ const addNewNote = async ({
   noteDispatch,
   navigate,
   noteBgColor,
+  title,
 }) => {
   try {
     const url = "/api/notes";
@@ -16,7 +15,7 @@ const addNewNote = async ({
         authorization: token,
       },
     };
-    const data = { note: { note, noteBgColor: noteBgColor } };
+    const data = { note: { note, noteBgColor, title: title } };
     const response = await axios.post(url, data, config);
     if (response.status === 201) {
       const { notes } = response.data;

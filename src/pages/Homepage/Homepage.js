@@ -18,7 +18,7 @@ const Homepage = () => {
         <Sidebar />
         <div className="note-card-container">
           {notes.length !== 0
-            ? notes.map(({ note, createdAt, _id, noteBgColor }) => (
+            ? notes.map(({ note, createdAt, _id, noteBgColor, title }) => (
                 <li key={_id}>
                   <NoteCard
                     note={note}
@@ -26,6 +26,7 @@ const Homepage = () => {
                     _id={_id}
                     inArchive={false}
                     noteBgColor={noteBgColor}
+                    title={title}
                   />
                 </li>
               ))

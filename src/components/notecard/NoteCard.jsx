@@ -11,16 +11,18 @@ const NoteCard = ({
   inArchive,
   inTrash,
   noteBgColor,
+  title,
 }) => {
   const { authState } = useAuth();
   const { token } = authState;
   const { noteDispatch } = useNote();
   const { moveToTrash, deleteFromTrash, restoreFromTrash } = useTrash();
   console.log("noteBgColor:", noteBgColor);
+  console.log("title:", title);
 
   return (
     <div style={{ background: noteBgColor }} className="note-card">
-      <h3>Title</h3>
+      <h3>{title}</h3>
       {ReactHtmlParser(note)}
       <div className="note-card-bottom-section">
         <h3 className="note-created-date">Created On</h3>

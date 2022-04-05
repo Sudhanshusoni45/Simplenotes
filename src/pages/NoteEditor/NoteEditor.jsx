@@ -10,17 +10,31 @@ import { Navbar, Sidebar } from "../../components";
 
 const NoteEditor = () => {
   const [note, setNote] = useState("");
-  const [noteBgColor, setNoteBgcolor] = useState("red");
+  // const [noteBgColor, setNoteBgcolor] = useState("red");
+  const [noteProperties, setNoteProperties] = useState({
+    title: "Initial Title",
+    noteBgColor: "red",
+  });
   const { noteDispatch } = useNote();
   const { authState } = useAuth();
   const { token } = authState;
   const navigate = useNavigate();
+  const { noteBgColor, title } = noteProperties;
+
+  const handleNoteProperties = (e) => {
+    const { name, value } = e.target;
+    setNoteProperties((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   const handleChange = (e) => {
-    setNote(e);
+    setNote((prevState) => e);
   };
 
   const submitHandler = () => {
-    addNewNote({ note, token, noteDispatch, navigate, noteBgColor });
+    addNewNote({ note, token, noteDispatch, navigate, noteBgColor, title });
   };
 
   return (
@@ -29,6 +43,14 @@ const NoteEditor = () => {
       <div className="noteEditor-page-container">
         <Sidebar />
         <div className="note-editor-conatiner">
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Title"
+              name="title"
+              onChange={(e) => handleNoteProperties(e)}
+            />
+          </div>
           <ReactQuill
             className="note-editor"
             value={note}
@@ -38,9 +60,9 @@ const NoteEditor = () => {
             Add new Note
           </button>
           <select
-            name="note-bg-color"
+            name="noteBgColor"
             id="bg-color"
-            onChange={(e) => setNoteBgcolor((prevColor) => e.target.value)}
+            onChange={(e) => handleNoteProperties(e)}
           >
             <option value="red">red</option>
             <option value="blue">blue</option>
