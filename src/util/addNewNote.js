@@ -11,7 +11,6 @@ const addNewNote = async ({
   try {
     const url = "/api/notes";
     const createdAt = new Date().toLocaleString();
-    console.log("createdAt:", createdAt);
     const config = {
       headers: {
         authorization: token,

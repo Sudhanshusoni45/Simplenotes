@@ -33,7 +33,11 @@ const NoteEditor = () => {
   };
 
   const submitHandler = () => {
-    addNewNote({ note, token, noteDispatch, navigate, noteBgColor, title });
+    if (!note) {
+      alert("Please add note content");
+    } else {
+      addNewNote({ note, token, noteDispatch, navigate, noteBgColor, title });
+    }
   };
 
   return (
@@ -63,7 +67,7 @@ const NoteEditor = () => {
             id="bg-color"
             onChange={(e) => handleNoteProperties(e)}
           >
-            <option value="">default</option>
+            <option value="">gray</option>
             <option value="red">red</option>
             <option value="blue">blue</option>
             <option value="yellow">yellow</option>
