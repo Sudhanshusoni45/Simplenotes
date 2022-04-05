@@ -9,7 +9,6 @@ const Homepage = () => {
   const { noteState, noteDispatch } = useNote();
   const { notes } = noteState;
   useEffect(() => getNotes({ token, noteDispatch }), [authState]);
-  useEffect(() => console.log("noteState", noteState), [noteState]);
 
   return (
     <>
@@ -18,13 +17,15 @@ const Homepage = () => {
         <Sidebar />
         <div className="note-card-container">
           {notes.length !== 0
-            ? notes.map(({ note, createdAt, _id }) => (
+            ? notes.map(({ note, createdAt, _id, noteBgColor, title }) => (
                 <li key={_id}>
                   <NoteCard
                     note={note}
                     createdAt={createdAt}
                     _id={_id}
                     inArchive={false}
+                    noteBgColor={noteBgColor}
+                    title={title}
                   />
                 </li>
               ))

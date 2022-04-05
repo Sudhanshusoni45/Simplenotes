@@ -1,0 +1,22 @@
+.note-editor{
+    width: 50%;
+}
+
+.note-editor-conatiner button{
+    width: 9rem;
+}
+
+.note-editor-conatiner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    margin-right: var(--space-xxxl);
+}
+
+.noteEditor-page-container{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    margin-top: var(--space-sm);
+}
+

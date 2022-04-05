@@ -1,16 +1,22 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
-const addNewNote = async ({ note, token, noteDispatch, navigate }) => {
+const addNewNote = async ({
+  note,
+  token,
+  noteDispatch,
+  navigate,
+  noteBgColor,
+  title,
+}) => {
   try {
     const url = "/api/notes";
+    const createdAt = new Date().toLocaleString();
     const config = {
       headers: {
         authorization: token,
       },
     };
-    const data = { note: { note } };
+    const data = { note: { note, noteBgColor, title, createdAt } };
     const response = await axios.post(url, data, config);
     if (response.status === 201) {
       const { notes } = response.data;
