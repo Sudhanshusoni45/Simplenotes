@@ -2,6 +2,7 @@ import axios from "axios";
 
 const deleteNote = async ({ _id, token, noteDispatch }) => {
   try {
+    console.log("delete note ran");
     const url = `/api/notes/${_id}`;
 
     const config = {

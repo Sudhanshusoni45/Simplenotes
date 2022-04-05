@@ -12,6 +12,8 @@ const noteReducer = (state, { type, payload }) => {
       return { ...state, archives: [...archives], notes: [...notes] };
     case "RESTORE_ARCHIVE_NOTE":
       return { ...state, archives: [...archives], notes: [...notes] };
+    case "RESTORE_FROM_TRASH":
+      return { ...state, notes: [...state.notes, notes] };
     default:
       return state;
   }

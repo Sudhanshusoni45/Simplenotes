@@ -8,7 +8,7 @@ const NoteCard = ({ note, _id, createdAt, inArchive, inTrash }) => {
   const { authState } = useAuth();
   const { token } = authState;
   const { noteDispatch } = useNote();
-  const { moveToTrash, deleteFromTrash } = useTrash();
+  const { moveToTrash, deleteFromTrash, restoreFromTrash } = useTrash();
 
   return (
     <div className="note-card">
@@ -39,6 +39,14 @@ const NoteCard = ({ note, _id, createdAt, inArchive, inTrash }) => {
               }
             ></i>
           ) : null}
+          {inTrash ? (
+            <i
+              className="fa fa-undo"
+              aria-hidden="true"
+              onClick={() => restoreFromTrash({ _id, token, noteDispatch })}
+            ></i>
+          ) : null}
+
           {inTrash ? (
             <i
               className="fa fa-times"
