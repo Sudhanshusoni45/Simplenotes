@@ -1,13 +1,14 @@
 import "./NoteCard.css";
 import ReactHtmlParser from "react-html-parser";
 import { addToArchive, deleteNote, restoreArchiveNote } from "../../util";
-import { useAuth, useNote } from "../../context";
+import { useAuth, useNote, useTrash } from "../../context";
 import { deleteArchiveNote } from "../../util/deleteArchiveNote";
 
-const NoteCard = ({ note, _id, createdAt, inArchive }) => {
+const NoteCard = ({ note, _id, createdAt, inArchive, inTrash }) => {
   const { authState } = useAuth();
   const { token } = authState;
   const { noteDispatch } = useNote();
+  const { moveToTrash, deleteFromTrash, restoreFromTrash } = useTrash();
 
   return (
     <div className="note-card">
@@ -37,11 +38,27 @@ const NoteCard = ({ note, _id, createdAt, inArchive }) => {
                 deleteArchiveNote({ _id, noteDispatch, token, note })
               }
             ></i>
+          ) : null}
+          {inTrash ? (
+            <i
+              className="fa fa-undo"
+              aria-hidden="true"
+              onClick={() => restoreFromTrash({ _id, token, noteDispatch })}
+            ></i>
+          ) : null}
+
+          {inTrash ? (
+            <i
+              className="fa fa-times"
+              aria-hidden="true"
+              onClick={() => deleteFromTrash(_id)}
+            ></i>
           ) : (
             <i
               className="fas fa-trash"
               onClick={() => {
                 deleteNote({ _id, noteDispatch, token, note });
+                moveToTrash({ _id, note });
               }}
             ></i>
           )}
