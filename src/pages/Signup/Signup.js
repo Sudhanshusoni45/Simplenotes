@@ -48,6 +48,7 @@ const Signup = () => {
               name="email"
               value={newUser.email}
               onChange={changeHandler}
+              required
             />
 
             <label htmlFor="password">Password</label>
@@ -57,6 +58,7 @@ const Signup = () => {
               name="password"
               value={newUser.password}
               onChange={changeHandler}
+              required
             />
           </div>
           <div>
@@ -70,7 +72,7 @@ const Signup = () => {
           </a>
           <Link to={"/login"}>Already have an account ? Login instead</Link>
 
-          <button className="btn login-btn">SignUp</button>
+          <button className="btn login-btn bg-primary">SignUp</button>
         </form>
       </div>
     </>

@@ -1,3 +1,40 @@
+:root{
+  --primary-color: #8e69cb;
+  --blue-color: #b5deff;
+  --orange-color: #fda27b;
+  --green-color: #d5ecc2;
+  --bg-grey-color: #f5f5f5;
+  --red-color: #f16765;
+}
+
+/* backgrounds */
+.bg-yellow {
+  background: var(--yellow-color);
+}
+
+.bg-blue {
+  background: var(--blue-color);
+}
+
+.bg-pink {
+  background: var(--pink-color);
+}
+
+.bg-green {
+  background: var(--green-color);
+}
+
+.bg-orange {
+  background: var(--orange-color);
+}
+
+.bg-primary {
+  background: var(--primary-color);
+}
+
+
+
+
 li{
   list-style: none;
 }

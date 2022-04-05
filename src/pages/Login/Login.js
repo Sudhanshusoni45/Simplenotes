@@ -37,6 +37,7 @@ const Login = () => {
               name="email"
               value={user.email}
               onChange={changeHandler}
+              required
             />
 
             <label htmlFor="Password">Password</label>
@@ -46,6 +47,7 @@ const Login = () => {
               id="password"
               value={user.password}
               onChange={changeHandler}
+              required
             />
           </div>
 
@@ -60,10 +62,13 @@ const Login = () => {
           </a>
           <Link to={"/signup"}> New here? Create a new account </Link>
 
-          <button className="btn login-btn" onClick={addGuestCredentials}>
+          <button
+            className="btn login-btn bg-primary outline-primary"
+            onClick={addGuestCredentials}
+          >
             Test Login
           </button>
-          <button type="submit" className="btn login-btn">
+          <button type="submit" className="btn login-btn bg-primary">
             Login
           </button>
         </form>

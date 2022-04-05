@@ -1,2 +1,2 @@
-import heroimage from "./heroimage.svg";
-export { heroimage };
+import heroimagetwo from "./heroimagetwo.svg";
+export { heroimagetwo };
