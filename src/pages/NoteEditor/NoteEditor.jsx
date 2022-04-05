@@ -11,7 +11,7 @@ import { Navbar, Sidebar } from "../../components";
 const NoteEditor = () => {
   const [note, setNote] = useState("");
   const [noteProperties, setNoteProperties] = useState({
-    title: "Title",
+    title: "My Note",
     noteBgColor: "",
   });
   const { noteDispatch } = useNote();
