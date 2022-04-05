@@ -10,10 +10,9 @@ import { Navbar, Sidebar } from "../../components";
 
 const NoteEditor = () => {
   const [note, setNote] = useState("");
-  // const [noteBgColor, setNoteBgcolor] = useState("red");
   const [noteProperties, setNoteProperties] = useState({
-    title: "Initial Title",
-    noteBgColor: "red",
+    title: "Title",
+    noteBgColor: "",
   });
   const { noteDispatch } = useNote();
   const { authState } = useAuth();
@@ -64,6 +63,7 @@ const NoteEditor = () => {
             id="bg-color"
             onChange={(e) => handleNoteProperties(e)}
           >
+            <option value="">default</option>
             <option value="red">red</option>
             <option value="blue">blue</option>
             <option value="yellow">yellow</option>

@@ -10,12 +10,14 @@ const addNewNote = async ({
 }) => {
   try {
     const url = "/api/notes";
+    const createdAt = new Date().toLocaleString();
+    console.log("createdAt:", createdAt);
     const config = {
       headers: {
         authorization: token,
       },
     };
-    const data = { note: { note, noteBgColor, title: title } };
+    const data = { note: { note, noteBgColor, title, createdAt } };
     const response = await axios.post(url, data, config);
     if (response.status === 201) {
       const { notes } = response.data;
