@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useAuth, useNote } from "../../context";
 import { addNewNote } from "../../util";
 import { useNavigate } from "react-router-dom";
+import "./NoteEditor.css";
+import { Navbar, Sidebar } from "../../components";
 
 const NoteEditor = () => {
   const [note, setNote] = useState();
@@ -23,10 +25,20 @@ const NoteEditor = () => {
 
   return (
     <>
-      <ReactQuill value={note} onChange={handleChange} />
-      <button className="btn" onClick={submitHandler}>
-        Add new Note
-      </button>
+      <Navbar />
+      <div className="noteEditor-page-container">
+        <Sidebar />
+        <div className="note-editor-conatiner">
+          <ReactQuill
+            className="note-editor"
+            value={note}
+            onChange={handleChange}
+          />
+          <button className="btn" onClick={submitHandler}>
+            Add new Note
+          </button>
+        </div>
+      </div>
     </>
   );
 };
