@@ -7,37 +7,37 @@ const Sidebar = () => {
       <ul className="list-reset">
         <li>
           <Link to={"/home"}>
-            <i className="fas fa-home"></i>
+            <i className="sidebar-icons fas fa-home"></i>
             <label htmlFor="home">Home</label>
           </Link>
         </li>
         <li>
           <Link to={"/home"}>
-            <i className="fa fa-tag" aria-hidden="true"></i>
+            <i className="sidebar-icons fa fa-tag" aria-hidden="true"></i>
             <label htmlFor="label">Label</label>
           </Link>
         </li>
         <li>
           <Link to={"/archives"}>
-            <i className="fas fa-archive"></i>
+            <i className="sidebar-icons fas fa-archive"></i>
             <label htmlFor="archive">Archive</label>
           </Link>
         </li>
         <li>
           <Link to={"/trash"}>
-            <i className="fas fa-trash"></i>
+            <i className="sidebar-icons fas fa-trash"></i>
             <label htmlFor="trash">Trash</label>
           </Link>
         </li>
         <li>
           <Link to={"/home"}>
-            <i className="fas fa-user"></i>
+            <i className="sidebar-icons fas fa-user"></i>
             <label htmlFor="profile">Profile</label>
           </Link>
         </li>
         <li>
           <Link to={"/noteeditor"}>
-            <button className="btn">Create New Note</button>
+            <button className="btn bg-primary">Create New Note</button>
           </Link>
         </li>
       </ul>
@@ -51,7 +51,10 @@ const Sidebar = () => {
           <h4>Sudhanshu Soni</h4>
           <small>@sudhanshusoni</small>
         </div>
-        <i className="fa fa-sign-out" aria-hidden="true"></i>
+        <i
+          className="sidebar-icons sidebar-logout fa fa-sign-out"
+          aria-hidden="true"
+        ></i>
       </div>
     </aside>
   );

@@ -9,6 +9,8 @@
 .sidebar-container label {
   margin-left: var(--space-xxs);
 }
+
+
 .sidebar-container a {
   text-decoration: none;
   color: var(--color-black);
@@ -20,8 +22,8 @@
   gap: 1rem;
 }
 
-.sidebar-container i {
-  color: var(--color-black);
+.sidebar-icons {
+  color: var(--primary-color);
   font-size: 1.5rem;
   margin-bottom: var(--space-xs);
 }
@@ -32,4 +34,8 @@
 
 .user-logout i {
   margin: var(--space-xxs) 0  0 var(--space-xxs) ;
+}
+
+.sidebar-logout{
+  color: var(--color-black);
 }
