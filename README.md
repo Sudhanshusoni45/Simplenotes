@@ -20,6 +20,8 @@ With various features to make your life easy.
 
 ![LandingPage.png](https://i.postimg.cc/4djxkFyb/image.png)
 
-![HomePage.png](https://i.postimg.cc/yx5YKpNy/notes-Home.png)
+![notesHome](https://user-images.githubusercontent.com/26003401/162242260-b3a30e8d-8200-49cd-a266-44fbc4d323af.png)
 
 ![EditorPage.png](https://i.postimg.cc/FFxB6k61/image.png)
+
+
