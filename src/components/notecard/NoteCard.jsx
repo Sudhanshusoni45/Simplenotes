@@ -66,7 +66,7 @@ const NoteCard = ({
               className="fas fa-trash"
               onClick={() => {
                 deleteNote({ _id, noteDispatch, token, note });
-                moveToTrash({ _id, note });
+                moveToTrash({ _id, note, createdAt, title, noteBgColor });
               }}
             ></i>
           )}
