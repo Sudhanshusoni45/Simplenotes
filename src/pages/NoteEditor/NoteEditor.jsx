@@ -59,7 +59,7 @@ const NoteEditor = () => {
             value={note}
             onChange={handleChange}
           />
-          <button className="btn" onClick={submitHandler}>
+          <button className="btn outline-primary" onClick={submitHandler}>
             Add new Note
           </button>
           <select
@@ -68,9 +68,9 @@ const NoteEditor = () => {
             onChange={(e) => handleNoteProperties(e)}
           >
             <option value="">gray</option>
-            <option value="red">red</option>
-            <option value="blue">blue</option>
-            <option value="yellow">yellow</option>
+            <option value="bg-red">red</option>
+            <option value="bg-blue">blue</option>
+            <option value="bg-yellow">yellow</option>
           </select>
         </div>
       </div>

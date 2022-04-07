@@ -19,7 +19,7 @@ const NoteCard = ({
   const { moveToTrash, deleteFromTrash, restoreFromTrash } = useTrash();
 
   return (
-    <div style={{ background: noteBgColor }} className="note-card">
+    <div className={`note-card ${noteBgColor}`}>
       <h3>{title}</h3>
       {ReactHtmlParser(note)}
       <div className="note-card-bottom-section">
@@ -66,7 +66,7 @@ const NoteCard = ({
               className="fas fa-trash"
               onClick={() => {
                 deleteNote({ _id, noteDispatch, token, note });
-                moveToTrash({ _id, note });
+                moveToTrash({ _id, note, createdAt, title, noteBgColor });
               }}
             ></i>
           )}

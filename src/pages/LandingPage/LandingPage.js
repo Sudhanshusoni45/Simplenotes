@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { heroimage } from "../../assests";
+import { heroimagetwo } from "../../assests";
 import "./LandingPage.css";
 
 const LandingPage = () => {
@@ -18,12 +18,16 @@ const LandingPage = () => {
           </div>
           <div className="primary-cta">
             <Link to={"signup"}>
-              <button className="btn">Join Now</button>
+              <button className="btn bg-primary">Join Now</button>
             </Link>
             <Link to={"login"}>Already have an account?</Link>
           </div>
         </div>
-        <img src={heroimage} alt="Girl taking Notes" className="hero-image" />
+        <img
+          src={heroimagetwo}
+          alt="Girl taking Notes"
+          className="hero-image"
+        />
       </div>
     </>
   );

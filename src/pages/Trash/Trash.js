@@ -10,9 +10,16 @@ const Trash = () => {
       <div className="homepage-container">
         <Sidebar />
         <div className="note-card-container">
-          {trashState.map(({ _id, note }) => (
+          {trashState.map(({ _id, note, createdAt, noteBgColor, title }) => (
             <li key={_id}>
-              <NoteCard _id={_id} inTrash={true} note={note} />
+              <NoteCard
+                _id={_id}
+                inTrash={true}
+                note={note}
+                title={title}
+                noteBgColor={noteBgColor}
+                createdAt={createdAt}
+              />
             </li>
           ))}
         </div>
