@@ -19,7 +19,7 @@ const NoteCard = ({
   const { moveToTrash, deleteFromTrash, restoreFromTrash } = useTrash();
 
   return (
-    <div style={{ background: noteBgColor }} className="note-card">
+    <div className={`note-card ${noteBgColor}`}>
       <h3>{title}</h3>
       {ReactHtmlParser(note)}
       <div className="note-card-bottom-section">
