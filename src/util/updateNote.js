@@ -17,7 +17,6 @@ const updateNote = async ({
       },
     };
     const response = await axios.post(url, data, config);
-    console.log("response:", response);
     if (response.status === 201) {
       const { notes } = response.data;
       noteDispatch({ type: "UPDATE_NOTE", payload: { notes } });

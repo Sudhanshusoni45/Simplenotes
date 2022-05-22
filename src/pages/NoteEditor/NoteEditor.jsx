@@ -20,11 +20,9 @@ const NoteEditor = () => {
   const navigate = useNavigate();
   const { noteBgColor, title } = noteProperties;
   const { noteId } = useParams();
-  console.log("noteId:", noteId);
 
   const findNote = () => {
     const res = noteState.notes.find(({ _id }) => _id === noteId);
-    console.log("res:", res);
     if (res) {
       setNote((prevNote) => res.note);
       setNoteProperties((prevState) => ({
