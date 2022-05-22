@@ -8,31 +8,41 @@ const Sidebar = () => {
         <li>
           <Link to={"/home"}>
             <i className="sidebar-icons fas fa-home"></i>
-            <label htmlFor="home">Home</label>
+            <label className="cursor_pointer" htmlFor="home">
+              Home
+            </label>
           </Link>
         </li>
         <li>
           <Link to={"/home"}>
             <i className="sidebar-icons fa fa-tag" aria-hidden="true"></i>
-            <label htmlFor="label">Label</label>
+            <label className="cursor_pointer" htmlFor="label">
+              Label
+            </label>
           </Link>
         </li>
         <li>
           <Link to={"/archives"}>
             <i className="sidebar-icons fas fa-archive"></i>
-            <label htmlFor="archive">Archive</label>
+            <label className="cursor_pointer" htmlFor="archive">
+              Archive
+            </label>
           </Link>
         </li>
         <li>
           <Link to={"/trash"}>
             <i className="sidebar-icons fas fa-trash"></i>
-            <label htmlFor="trash">Trash</label>
+            <label className="cursor_pointer" htmlFor="trash">
+              Trash
+            </label>
           </Link>
         </li>
         <li>
           <Link to={"/home"}>
             <i className="sidebar-icons fas fa-user"></i>
-            <label htmlFor="profile">Profile</label>
+            <label className="cursor_pointer" htmlFor="profile">
+              Profile
+            </label>
           </Link>
         </li>
         <li>

@@ -18,6 +18,7 @@ function App() {
       <Route path="login" element={<Login />}></Route>
       <Route path="signup" element={<Signup />}></Route>
       <Route path="noteeditor" element={<NoteEditor />}></Route>
+      <Route path="noteeditor/:noteId" element={<NoteEditor />}></Route>
       <Route path="archives" element={<Archives />}></Route>
       <Route path="trash" element={<Trash />}></Route>
     </Routes>

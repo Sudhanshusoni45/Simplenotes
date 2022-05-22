@@ -3,22 +3,35 @@ import { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { useEffect } from "react";
 import { useAuth, useNote } from "../../context";
-import { addNewNote } from "../../util";
-import { useNavigate } from "react-router-dom";
+import { addNewNote, updateNote } from "../../util";
+import { useNavigate, useParams } from "react-router-dom";
 import "./NoteEditor.css";
 import { Navbar, Sidebar } from "../../components";
 
 const NoteEditor = () => {
-  const [note, setNote] = useState("");
   const [noteProperties, setNoteProperties] = useState({
     title: "My Note",
     noteBgColor: "",
   });
-  const { noteDispatch } = useNote();
+  const [note, setNote] = useState("");
+  const { noteState, noteDispatch } = useNote();
   const { authState } = useAuth();
   const { token } = authState;
   const navigate = useNavigate();
   const { noteBgColor, title } = noteProperties;
+  const { noteId } = useParams();
+
+  const findNote = () => {
+    const res = noteState.notes.find(({ _id }) => _id === noteId);
+    if (res) {
+      setNote((prevNote) => res.note);
+      setNoteProperties((prevState) => ({
+        title: res.title,
+        noteBgColor: res.noteBgColor,
+      }));
+    }
+  };
+  useEffect(() => findNote(), []);
 
   const handleNoteProperties = (e) => {
     const { name, value } = e.target;
@@ -35,9 +48,12 @@ const NoteEditor = () => {
   const submitHandler = () => {
     if (!note) {
       alert("Please add note content");
-    } else {
+    } else if (!noteId) {
       addNewNote({ note, token, noteDispatch, navigate, noteBgColor, title });
+    } else {
+      updateNote({ noteId, token, noteDispatch, note, noteProperties });
     }
+    navigate("/home");
   };
 
   return (
@@ -51,6 +67,7 @@ const NoteEditor = () => {
               type="text"
               placeholder="Title"
               name="title"
+              value={noteProperties.title}
               onChange={(e) => handleNoteProperties(e)}
             />
           </div>
@@ -60,7 +77,7 @@ const NoteEditor = () => {
             onChange={handleChange}
           />
           <button className="btn outline-primary" onClick={submitHandler}>
-            Add new Note
+            Save Note
           </button>
           <select
             name="noteBgColor"

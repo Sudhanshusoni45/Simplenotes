@@ -1,8 +1,14 @@
 import "./NoteCard.css";
 import ReactHtmlParser from "react-html-parser";
-import { addToArchive, deleteNote, restoreArchiveNote } from "../../util";
+import {
+  addToArchive,
+  deleteNote,
+  restoreArchiveNote,
+  updateNote,
+} from "../../util";
 import { useAuth, useNote, useTrash } from "../../context";
 import { deleteArchiveNote } from "../../util/deleteArchiveNote";
+import { useNavigate } from "react-router-dom";
 
 const NoteCard = ({
   note,
@@ -17,15 +23,18 @@ const NoteCard = ({
   const { token } = authState;
   const { noteDispatch } = useNote();
   const { moveToTrash, deleteFromTrash, restoreFromTrash } = useTrash();
+  const Navigate = useNavigate();
 
   return (
-    <div className={`note-card ${noteBgColor}`}>
+    <div
+      className={`note-card ${noteBgColor} cursor_pointer`}
+      onClick={() => Navigate(`/noteeditor/${_id}`)}
+    >
       <h3>{title}</h3>
       {ReactHtmlParser(note)}
       <div className="note-card-bottom-section">
         <h3 className="note-created-date">{createdAt}</h3>
         <div className="note-icon-container">
-          <i className="fas fa-palette"></i>
           <i className="fas fa-tag"></i>
           {inArchive ? (
             <i
