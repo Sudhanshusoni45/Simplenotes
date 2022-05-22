@@ -6,6 +6,8 @@ const noteReducer = (state, { type, payload }) => {
       return { ...state, notes: [...notes] };
     case "ADD_NOTE":
       return { ...state, notes: [...notes] };
+    case "UPDATE_NOTE":
+      return { ...state, notes: [...notes] };
     case "DELETE":
       return { ...state, notes: [...notes] };
     case "ADD_TO_ARCHIVE":
