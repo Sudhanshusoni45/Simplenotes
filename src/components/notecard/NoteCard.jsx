@@ -40,27 +40,37 @@ const NoteCard = ({
             <i
               className="fa fa-undo"
               aria-hidden="true"
-              onClick={() => restoreArchiveNote({ _id, token, noteDispatch })}
+              onClick={(e) => {
+                restoreArchiveNote({ _id, token, noteDispatch });
+                e.stopPropagation();
+              }}
             ></i>
           ) : (
             <i
               className="fas fa-archive"
-              onClick={() => addToArchive({ _id, noteDispatch, token })}
+              onClick={(e) => {
+                addToArchive({ _id, noteDispatch, token });
+                e.stopPropagation();
+              }}
             ></i>
           )}
           {inArchive ? (
             <i
               className="fas fa-trash"
-              onClick={() =>
-                deleteArchiveNote({ _id, noteDispatch, token, note })
-              }
+              onClick={() => {
+                deleteArchiveNote({ _id, noteDispatch, token, note });
+                e.stopPropagation();
+              }}
             ></i>
           ) : null}
           {inTrash ? (
             <i
               className="fa fa-undo"
               aria-hidden="true"
-              onClick={() => restoreFromTrash({ _id, token, noteDispatch })}
+              onClick={() => {
+                restoreFromTrash({ _id, token, noteDispatch });
+                e.stopPropagation();
+              }}
             ></i>
           ) : null}
 
@@ -68,7 +78,10 @@ const NoteCard = ({
             <i
               className="fa fa-times"
               aria-hidden="true"
-              onClick={() => deleteFromTrash(_id)}
+              onClick={() => {
+                deleteFromTrash(_id);
+                e.stopPropagation();
+              }}
             ></i>
           ) : (
             <i
@@ -76,6 +89,7 @@ const NoteCard = ({
               onClick={() => {
                 deleteNote({ _id, noteDispatch, token, note });
                 moveToTrash({ _id, note, createdAt, title, noteBgColor });
+                e.stopPropagation();
               }}
             ></i>
           )}
