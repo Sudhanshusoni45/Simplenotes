@@ -8,7 +8,7 @@ import {
 } from "../../util";
 import { useAuth, useNote, useTrash } from "../../context";
 import { deleteArchiveNote } from "../../util/deleteArchiveNote";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const NoteCard = ({
   note,
@@ -24,11 +24,17 @@ const NoteCard = ({
   const { noteDispatch } = useNote();
   const { moveToTrash, deleteFromTrash, restoreFromTrash } = useTrash();
   const Navigate = useNavigate();
+  const location = useLocation();
+  console.log("location:", location);
 
   return (
     <div
       className={`note-card ${noteBgColor} cursor_pointer`}
-      onClick={() => Navigate(`/noteeditor/${_id}`)}
+      onClick={
+        location.pathname === "/home"
+          ? () => Navigate(`/noteeditor/${_id}`)
+          : null
+      }
     >
       <h3>{title}</h3>
       {ReactHtmlParser(note)}
@@ -40,27 +46,38 @@ const NoteCard = ({
             <i
               className="fa fa-undo"
               aria-hidden="true"
-              onClick={() => restoreArchiveNote({ _id, token, noteDispatch })}
+              onClick={(e) => {
+                restoreArchiveNote({ _id, token, noteDispatch });
+                e.stopPropagation();
+              }}
             ></i>
           ) : (
             <i
               className="fas fa-archive"
-              onClick={() => addToArchive({ _id, noteDispatch, token })}
+              onClick={(e) => {
+                addToArchive({ _id, noteDispatch, token });
+                e.stopPropagation();
+              }}
             ></i>
           )}
-          {inArchive ? (
-            <i
-              className="fas fa-trash"
-              onClick={() =>
-                deleteArchiveNote({ _id, noteDispatch, token, note })
-              }
-            ></i>
-          ) : null}
+          {inArchive
+            ? // <i
+              //   className="fas fa-trash"
+              //   onClick={(e) => {
+              //     deleteArchiveNote({ _id, noteDispatch, token, note });
+              //     e.stopPropagation();
+              //   }}
+              // ></i>
+              null
+            : null}
           {inTrash ? (
             <i
               className="fa fa-undo"
               aria-hidden="true"
-              onClick={() => restoreFromTrash({ _id, token, noteDispatch })}
+              onClick={(e) => {
+                restoreFromTrash({ _id, token, noteDispatch });
+                e.stopPropagation();
+              }}
             ></i>
           ) : null}
 
@@ -68,14 +85,18 @@ const NoteCard = ({
             <i
               className="fa fa-times"
               aria-hidden="true"
-              onClick={() => deleteFromTrash(_id)}
+              onClick={(e) => {
+                deleteFromTrash(_id);
+                e.stopPropagation();
+              }}
             ></i>
           ) : (
             <i
               className="fas fa-trash"
-              onClick={() => {
+              onClick={(e) => {
                 deleteNote({ _id, noteDispatch, token, note });
                 moveToTrash({ _id, note, createdAt, title, noteBgColor });
+                e.stopPropagation();
               }}
             ></i>
           )}
