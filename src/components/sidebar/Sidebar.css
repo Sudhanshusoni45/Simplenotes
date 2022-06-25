@@ -27,6 +27,7 @@
 }
 .user-logout i {
   margin: var(--space-xxs) 0 0 var(--space-xxs);
+  cursor: pointer;
 }
 .sidebar-logout {
   color: var(--color-black);

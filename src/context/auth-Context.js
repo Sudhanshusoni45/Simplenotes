@@ -4,16 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { authReducer } from "../reducer/authReducer";
 
 const AuthContext = createContext(null);
-const AuthProvider = ({ children }) => {
-  const initialToken = localStorage.getItem("token")
-    ? localStorage.getItem("token")
-    : "";
-  const initialState = { user: "", token: initialToken };
 
+const initialState = {
+  token: localStorage.getItem("token") ? localStorage.getItem("token") : null,
+  user: localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : null,
+};
+
+const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialState);
   const navigate = useNavigate();
 
-  // login
   const loginHandler = async (userCredentials) => {
     try {
       const url = "/api/auth/login";
@@ -23,6 +25,7 @@ const AuthProvider = ({ children }) => {
       if (response.status === 200) {
         authDispatch({ type: "LOGIN", payload: { user: user, token: token } });
         localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
         navigate("/home");
       }
     } catch (err) {
@@ -30,7 +33,6 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // signup
   const signupHandler = async (newUser) => {
     try {
       const url = "/api/auth/signup";
@@ -49,9 +51,24 @@ const AuthProvider = ({ children }) => {
       console.error(err);
     }
   };
+
+  const logoutHandler = () => {
+    authDispatch({
+      action: "LOGOUT",
+      payload: { user: null, token: null },
+    });
+    navigate("/login");
+  };
+
   return (
     <AuthContext.Provider
-      value={{ authState, authDispatch, signupHandler, loginHandler }}
+      value={{
+        authState,
+        authDispatch,
+        signupHandler,
+        loginHandler,
+        logoutHandler,
+      }}
     >
       {children}
     </AuthContext.Provider>

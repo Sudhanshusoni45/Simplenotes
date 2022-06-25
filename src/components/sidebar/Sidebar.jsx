@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
+import { useAuth } from "../../context";
 
 const Sidebar = () => {
+  const { authState, logoutHandler } = useAuth();
+  const {
+    user: { firstName, lastName },
+  } = authState;
+  console.log("authState:", authState);
   return (
     <aside className="sidebar-container">
       <ul className="list-reset">
@@ -50,12 +56,17 @@ const Sidebar = () => {
           alt="user pic"
         />
         <div>
-          <h4>Sudhanshu Soni</h4>
-          <small>@sudhanshusoni</small>
+          <h4>{firstName}</h4>
+          <small>
+            @{firstName}
+            {lastName}
+          </small>
         </div>
         <i
+          title="logout"
           className="sidebar-icons sidebar-logout fa fa-sign-out"
           aria-hidden="true"
+          onClick={() => logoutHandler()}
         ></i>
       </div>
     </aside>
