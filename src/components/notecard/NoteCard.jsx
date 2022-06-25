@@ -25,7 +25,6 @@ const NoteCard = ({
   const { moveToTrash, deleteFromTrash, restoreFromTrash } = useTrash();
   const Navigate = useNavigate();
   const location = useLocation();
-  console.log("location:", location);
 
   return (
     <div
@@ -41,8 +40,10 @@ const NoteCard = ({
       <div className="note-card-bottom-section">
         <h3 className="note-created-date">{createdAt}</h3>
         <div className="note-icon-container">
+          {/* restore note from archive */}
           {inArchive ? (
             <i
+              title="restore"
               className="fa fa-undo"
               aria-hidden="true"
               onClick={(e) => {
@@ -50,27 +51,49 @@ const NoteCard = ({
                 e.stopPropagation();
               }}
             ></i>
-          ) : (
+          ) : null}
+
+          {/* archives for home page */}
+          {location.pathname === "/home" ? (
             <i
+              title="archive"
               className="fas fa-archive"
               onClick={(e) => {
                 addToArchive({ _id, noteDispatch, token });
                 e.stopPropagation();
               }}
             ></i>
-          )}
-          {inArchive
-            ? // <i
-              //   className="fas fa-trash"
-              //   onClick={(e) => {
-              //     deleteArchiveNote({ _id, noteDispatch, token, note });
-              //     e.stopPropagation();
-              //   }}
-              // ></i>
-              null
-            : null}
+          ) : null}
+
+          {/* move to trash from archive */}
+          {inArchive ? (
+            <i
+              title="trash"
+              className="fas fa-trash"
+              onClick={(e) => {
+                moveToTrash({ _id, note, createdAt, title, noteBgColor });
+                deleteArchiveNote({ _id, noteDispatch, token, note });
+                e.stopPropagation();
+              }}
+            ></i>
+          ) : null}
+
+          {/* delete note from archive */}
+          {inArchive ? (
+            <i
+              title="delete"
+              className="fas fa-times"
+              onClick={(e) => {
+                deleteArchiveNote({ _id, noteDispatch, token, note });
+                e.stopPropagation();
+              }}
+            ></i>
+          ) : null}
+
+          {/* restore note from trash */}
           {inTrash ? (
             <i
+              title="restore"
               className="fa fa-undo"
               aria-hidden="true"
               onClick={(e) => {
@@ -80,8 +103,10 @@ const NoteCard = ({
             ></i>
           ) : null}
 
+          {/* delete note from trash */}
           {inTrash ? (
             <i
+              title="delete"
               className="fa fa-times"
               aria-hidden="true"
               onClick={(e) => {
@@ -89,8 +114,12 @@ const NoteCard = ({
                 e.stopPropagation();
               }}
             ></i>
-          ) : (
+          ) : null}
+
+          {/* move to trash from home */}
+          {location.pathname === "/home" ? (
             <i
+              title="trash"
               className="fas fa-trash"
               onClick={(e) => {
                 deleteNote({ _id, noteDispatch, token, note });
@@ -98,7 +127,19 @@ const NoteCard = ({
                 e.stopPropagation();
               }}
             ></i>
-          )}
+          ) : null}
+
+          {/* delete note from home */}
+          {location.pathname === "/home" ? (
+            <i
+              title="delete"
+              className="fas fa-times"
+              onClick={(e) => {
+                deleteNote({ _id, noteDispatch, token, note });
+                e.stopPropagation();
+              }}
+            ></i>
+          ) : null}
         </div>
       </div>
     </div>

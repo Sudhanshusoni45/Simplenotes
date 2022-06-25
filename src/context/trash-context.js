@@ -18,8 +18,8 @@ const TrashProvider = ({ children }) => {
   };
 
   const restoreFromTrash = ({ _id, noteDispatch, token }) => {
-    const { note } = trashState.find((item) => item._id === _id);
-    addNewNote({ noteDispatch, note, token, navigate });
+    const { note, title } = trashState.find((item) => item._id === _id);
+    addNewNote({ noteDispatch, title, note, token, navigate });
     deleteFromTrash(_id);
   };
 

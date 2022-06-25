@@ -7,7 +7,6 @@ const Homepage = () => {
   const { authState } = useAuth();
   const { token } = authState;
   const { noteState, noteDispatch } = useNote();
-  console.log("noteState:", noteState);
   const { notes } = noteState;
   useEffect(() => getNotes({ token, noteDispatch }), [authState]);
 
