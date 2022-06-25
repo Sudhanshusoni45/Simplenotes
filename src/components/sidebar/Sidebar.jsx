@@ -35,7 +35,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to={"/home"}>
+          <Link to={"/profile"}>
             <i className="sidebar-icons fas fa-user"></i>
             <label className="cursor_pointer" htmlFor="profile">
               Profile

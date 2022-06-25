@@ -18,8 +18,8 @@ const Login = () => {
 
   const addGuestCredentials = () => {
     setUser((prevUser) => ({
-      email: "adarshbalika@gmail.com",
-      password: "adarshBalika123",
+      email: "johndoe@gmail.com",
+      password: "johnDoe123",
     }));
   };
 

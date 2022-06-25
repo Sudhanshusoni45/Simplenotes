@@ -7,6 +7,9 @@
   --red-color: #ffa8bf;
   --yellow-color: #fff1a9;
 }
+.cursor_pointer {
+  cursor: pointer;
+}
 
 a {
   color: var(--primary-color);

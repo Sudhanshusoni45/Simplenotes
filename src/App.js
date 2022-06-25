@@ -7,6 +7,7 @@ import {
   LandingPage,
   Login,
   NoteEditor,
+  Profilepage,
   Signup,
   Trash,
 } from "./pages";
@@ -29,6 +30,7 @@ function App() {
       <Route path="noteeditor/:noteId" element={<NoteEditor />}></Route>
       <Route path="archives" element={<Archives />}></Route>
       <Route path="trash" element={<Trash />}></Route>
+      <Route path="profile" element={<Profilepage />}></Route>
     </Routes>
   );
 }
