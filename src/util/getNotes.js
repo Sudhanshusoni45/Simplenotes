@@ -10,19 +10,8 @@ const getNotes = async ({ token, noteDispatch }) => {
     };
     const response = await axios.get(url, config);
     if (response.status === 200) {
-      // sending a demo note here
-      noteDispatch({
-        type: "INITIALIZE",
-        payload: {
-          notes: [
-            {
-              title: "Demo Note",
-              note: "<p>This is a demo note</p>",
-              createdAt: new Date().toLocaleString(),
-            },
-          ],
-        },
-      });
+      const { notes } = response.data;
+      noteDispatch({ type: "INITIALIZE", payload: { notes: notes } });
     }
   } catch (err) {
     console.error(err);

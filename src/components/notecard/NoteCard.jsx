@@ -41,7 +41,6 @@ const NoteCard = ({
       <div className="note-card-bottom-section">
         <h3 className="note-created-date">{createdAt}</h3>
         <div className="note-icon-container">
-          <i className="fas fa-tag"></i>
           {inArchive ? (
             <i
               className="fa fa-undo"

@@ -14,14 +14,6 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to={"/home"}>
-            <i className="sidebar-icons fa fa-tag" aria-hidden="true"></i>
-            <label className="cursor_pointer" htmlFor="label">
-              Label
-            </label>
-          </Link>
-        </li>
-        <li>
           <Link to={"/archives"}>
             <i className="sidebar-icons fas fa-archive"></i>
             <label className="cursor_pointer" htmlFor="archive">
