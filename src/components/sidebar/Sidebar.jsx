@@ -7,7 +7,6 @@ const Sidebar = () => {
   const {
     user: { firstName, lastName },
   } = authState;
-  console.log("authState:", authState);
   return (
     <aside className="sidebar-container">
       <ul className="list-reset">

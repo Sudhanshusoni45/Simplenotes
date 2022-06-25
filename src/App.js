@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { RequiresAuth } from "./components";
 import {
   Archives,
   Homepage,
@@ -14,7 +15,14 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />}></Route>
-      <Route path="home" element={<Homepage />}></Route>
+      <Route
+        path="home"
+        element={
+          <RequiresAuth>
+            <Homepage />
+          </RequiresAuth>
+        }
+      ></Route>
       <Route path="login" element={<Login />}></Route>
       <Route path="signup" element={<Signup />}></Route>
       <Route path="noteeditor" element={<NoteEditor />}></Route>
