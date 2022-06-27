@@ -10,11 +10,21 @@ const Signup = () => {
     const { name, value } = e.target;
     setNewUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
     signupHandler(newUser);
   };
 
+  const testCrediantialsHandler = (e) => {
+    e.preventDefault();
+    signupHandler({
+      firstName: "sudhanshu",
+      lastName: "soni",
+      email: "sudhanshusoni45@gmail.com",
+      password: "sudhanshuSoni123",
+    });
+  };
   return (
     <>
       <Navbar />
@@ -71,7 +81,12 @@ const Signup = () => {
             <small>Forgot your password</small>
           </a>
           <Link to={"/login"}>Already have an account ? Login instead</Link>
-
+          <button
+            onClick={testCrediantialsHandler}
+            className="btn login-btn bg-primary outline-primary"
+          >
+            Test Signup
+          </button>
           <button className="btn login-btn bg-primary">SignUp</button>
         </form>
       </div>
