@@ -10,7 +10,7 @@ import { Navbar, Sidebar } from "../../components";
 
 const NoteEditor = () => {
   const [noteProperties, setNoteProperties] = useState({
-    title: "My Note",
+    title: "Enter Title",
     noteBgColor: "",
   });
   const [note, setNote] = useState("");
@@ -61,34 +61,40 @@ const NoteEditor = () => {
       <Navbar />
       <div className="noteEditor-page-container">
         <Sidebar />
-        <div className="note-editor-conatiner">
-          <div className="input-group">
-            <input
-              type="text"
-              placeholder="Title"
-              name="title"
-              value={noteProperties.title}
-              onChange={(e) => handleNoteProperties(e)}
+        <div className="test-container">
+          <div className="note-editor-container">
+            <div className="input-group note-title-container">
+              <input
+                type="text"
+                placeholder="Title"
+                name="title"
+                className="note-title-input"
+                value={noteProperties.title}
+                onChange={(e) => handleNoteProperties(e)}
+              />
+            </div>
+            <ReactQuill
+              className="note-editor"
+              value={note}
+              onChange={handleChange}
             />
+            <button className="btn outline-primary" onClick={submitHandler}>
+              Save Note
+            </button>
+            <div>
+              <label htmlFor="priority">priority: </label>
+              <select
+                name="noteBgColor"
+                id="bg-color"
+                onChange={(e) => handleNoteProperties(e)}
+              >
+                <option value="">gray</option>
+                <option value="bg-red">red</option>
+                <option value="bg-blue">blue</option>
+                <option value="bg-yellow">yellow</option>
+              </select>
+            </div>
           </div>
-          <ReactQuill
-            className="note-editor"
-            value={note}
-            onChange={handleChange}
-          />
-          <button className="btn outline-primary" onClick={submitHandler}>
-            Save Note
-          </button>
-          <select
-            name="noteBgColor"
-            id="bg-color"
-            onChange={(e) => handleNoteProperties(e)}
-          >
-            <option value="">gray</option>
-            <option value="bg-red">red</option>
-            <option value="bg-blue">blue</option>
-            <option value="bg-yellow">yellow</option>
-          </select>
         </div>
       </div>
     </>
