@@ -16,20 +16,22 @@ const Homepage = () => {
       <div className="homepage-container">
         <Sidebar />
         <div className="note-card-container">
-          {notes.length !== 0
-            ? notes.map(({ note, createdAt, _id, noteBgColor, title }) => (
-                <li key={_id}>
-                  <NoteCard
-                    note={note}
-                    createdAt={createdAt}
-                    _id={_id}
-                    inArchive={false}
-                    noteBgColor={noteBgColor}
-                    title={title}
-                  />
-                </li>
-              ))
-            : null}
+          {notes.length ? (
+            notes.map(({ note, createdAt, _id, noteBgColor, title }) => (
+              <li key={_id}>
+                <NoteCard
+                  note={note}
+                  createdAt={createdAt}
+                  _id={_id}
+                  inArchive={false}
+                  noteBgColor={noteBgColor}
+                  title={title}
+                />
+              </li>
+            ))
+          ) : (
+            <h1>You have not created any notes...</h1>
+          )}
         </div>
       </div>
     </>

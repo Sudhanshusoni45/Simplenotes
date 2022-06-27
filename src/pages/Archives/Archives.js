@@ -11,19 +11,21 @@ const Archives = () => {
       <div className="archive-page-container">
         <Sidebar />
         <div className="note-card-container">
-          {archives.length !== 0
-            ? archives.map(({ note, _id, title, noteBgColor, createdAt }) => (
-                <NoteCard
-                  note={note}
-                  inArchive={true}
-                  _id={_id}
-                  noteDispatch={noteDispatch}
-                  title={title}
-                  noteBgColor={noteBgColor}
-                  createdAt={createdAt}
-                />
-              ))
-            : null}
+          {archives.length !== 0 ? (
+            archives.map(({ note, _id, title, noteBgColor, createdAt }) => (
+              <NoteCard
+                note={note}
+                inArchive={true}
+                _id={_id}
+                noteDispatch={noteDispatch}
+                title={title}
+                noteBgColor={noteBgColor}
+                createdAt={createdAt}
+              />
+            ))
+          ) : (
+            <h1>There are no archive notes...</h1>
+          )}
         </div>
       </div>
     </>
